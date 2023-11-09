@@ -1,2 +1,5 @@
 - Created an react app with progressive create react app command.
--
+-installed eslint and prettier
+-turned on "no-unused-vars":"warn - to remove errors shown in red colour.
+-"git log" command to check if the git repository is initialized
+-installed react-router and learnt a new concept of <Outlet/> in routing
