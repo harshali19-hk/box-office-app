@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { SearchForShows, SearchForPeople } from '../API/TvmazeApi';
 import SearchForm from '../components/SearchForm';
+import ShowsGrid from '../components/shows/ShowsGrid';
+import ActorsGrid from '../components/actors/ActorsGrid';
+
 
 const Home = () => {
   const [apiData, setApiData] = useState([]);
@@ -30,23 +33,22 @@ const Home = () => {
       return <div>Error Ocuured : {apiDataError.message}</div>;
     }
 
-    if (apiData && Array.isArray(apiData)) {
+   /*  if (apiData && Array.isArray(apiData)) {
       return apiData.map(item => (
         <div key={item.show ? item.show.id : item.person.id}>
           {item.show ? item.show.name : item.person.name}
         </div>
       ));
-    }
-    /* 
-    if (apiData && Array.isArray(apiData)) {
-      return apiData[0].show ? (apiData.map(item => (
-        <div key={item.show.id}> {item.show.name} </div>
-      ))) : (apiData.map((item)=>(
-        <div key={item.person.id}>{item.person.name}</div>
-      )));
-    } */
+    } */ /* optional code */
 
-    return null;
+
+   /* if(apiData?.length === 0){
+    return <div>No Results Found</div>
+  } */
+    if (apiData) {
+      return   apiData[0]?.show ? <ShowsGrid shows={apiData}/>: <ActorsGrid actors={apiData} />
+    }
+   return null;
   };
 
   return (
