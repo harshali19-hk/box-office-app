@@ -1,12 +1,9 @@
-
-
 const Starred = () => {
   return (
     <div>
-    <h1>starred page</h1>
-    
+      <h1>starred page</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Starred
+export default Starred;
