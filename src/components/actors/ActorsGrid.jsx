@@ -1,7 +1,7 @@
 import ActorsCard from './ActorsCard';
 
 const ActorsGrid = ({ actors }) => {
-    console.log("act :", actors)
+    // console.log("act :", actors)
   return (
     <>
       {actors.map(data => (
