@@ -1,11 +1,22 @@
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Starred from './pages/Starred';
 import MainLayout from './components/MainLayout';
 import Show from './pages/ShowPage';
+
+const queryClient = new QueryClient()
+
 function App() {
+
+
   return (
     <div>
+  <QueryClientProvider client={queryClient}>
+
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
@@ -32,6 +43,8 @@ function App() {
           <Route path="contact-us" element={<Contact />} /> */}
         </Routes>
       </BrowserRouter>
+</QueryClientProvider>
+
     </div>
   );
 }
