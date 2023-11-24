@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const SearchForm = ({onSearch}) => {
     const [searchStr, setSearchStr] = useState('');
     const [searchOption, setSearchOption] = useState('shows');
+
+    //console.log("Component outside UseEffect")
+
+    useEffect(()=>{
+      console.log("Component inside UseEffect")
+    },[])
 
     const handleInputChange = eve => {
         setSearchStr(eve.target.value);
