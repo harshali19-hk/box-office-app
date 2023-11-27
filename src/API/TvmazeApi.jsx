@@ -10,4 +10,4 @@ export const SearchForShows = query => APIget(`/search/shows?q=${query}`);
 
 export const SearchForPeople = query => APIget(`/search/people?q=${query}`);
 
-export const GetShowId = (showId) => APIget(`/shows/${showId}`);
+export const GetShowId = (showId) => APIget(`/shows/${showId}?embed[]=seasons&embed[]=cast`);
