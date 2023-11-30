@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import {  useState } from 'react';
 import { useQuery } from 'react-query';
 import { SearchForShows, SearchForPeople } from '../API/TvmazeApi';
 import SearchForm from '../components/SearchForm';
 import ShowsGrid from '../components/shows/ShowsGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
 
+
+
+
 const Home = () => {
-  // const [apiData, setApiData] = useState([]);
    const [filter, setFilter] = useState(null);
-  
+      
    const {data:apiData , error:apiDataError} = useQuery( {queryKey : ['search', filter], queryFn : () => 
    filter.searchOption === 'shows' ? SearchForShows(filter.q) : SearchForPeople(filter.q),
    enabled : !!filter,
