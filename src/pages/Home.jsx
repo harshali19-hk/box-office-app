@@ -1,34 +1,31 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { SearchForShows, SearchForPeople } from '../API/TvmazeApi';
 import SearchForm from '../components/SearchForm';
 import ShowsGrid from '../components/shows/ShowsGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
-import styled,{css} from 'styled-components'
-
-
-
-
-
-
-
+import {TextCenter} from '../components/Commom/TextCenter'
 
 const Home = () => {
-   const [filter, setFilter] = useState(null);
-      
-   const {data:apiData , error:apiDataError} = useQuery( {queryKey : ['search', filter], queryFn : () => 
-   filter.searchOption === 'shows' ? SearchForShows(filter.q) : SearchForPeople(filter.q),
-   enabled : !!filter,
-   refetchOnWindowFocus:false
+  const [filter, setFilter] = useState(null);
+
+  const { data: apiData, error: apiDataError } = useQuery({
+    queryKey: ['search', filter],
+    queryFn: () =>
+      filter.searchOption === 'shows'
+        ? SearchForShows(filter.q)
+        : SearchForPeople(filter.q),
+    enabled: !!filter,
+    refetchOnWindowFocus: false,
   });
 
   const handleOnSearch = async ({ q, searchOption }) => {
-   setFilter({ q, searchOption })
+    setFilter({ q, searchOption });
   };
 
   const renderApiData = () => {
     if (apiDataError) {
-      return <div>Error Ocuured : {apiDataError.message}</div>;
+      return <TextCenter>Error Ocuured : {apiDataError.message}</TextCenter>;
     }
 
     /*  if (apiData && Array.isArray(apiData)) {
@@ -39,9 +36,9 @@ const Home = () => {
       ));
     } */ /* optional code */
 
-    /* if(apiData?.length === 0){
-    return <div>No Results Found</div>
-  } */
+    if(apiData?.length === 0){
+    return <TextCenter>No Results Found</TextCenter>
+  }
     if (apiData) {
       return apiData[0]?.show ? (
         <ShowsGrid shows={apiData} />
@@ -54,8 +51,6 @@ const Home = () => {
 
   return (
     <div>
-
-      
       <SearchForm onSearch={handleOnSearch} />
       <div>{renderApiData()}</div>
     </div>
