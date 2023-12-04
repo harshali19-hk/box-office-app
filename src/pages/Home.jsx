@@ -4,6 +4,11 @@ import { SearchForShows, SearchForPeople } from '../API/TvmazeApi';
 import SearchForm from '../components/SearchForm';
 import ShowsGrid from '../components/shows/ShowsGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
+import styled,{css} from 'styled-components'
+
+
+
+
 
 
 
@@ -49,6 +54,8 @@ const Home = () => {
 
   return (
     <div>
+
+      
       <SearchForm onSearch={handleOnSearch} />
       <div>{renderApiData()}</div>
     </div>
