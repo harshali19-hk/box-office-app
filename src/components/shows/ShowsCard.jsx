@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { SearchCard, SearchImgWrapper } from '../Commom/SearchCard';
 import { StarIcon } from '../Commom/StartIcon';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const ShowsCard = ({ name, image, id, summary, onStarMeClick, isStarred }) => {
   const summaryStripped = summary
@@ -36,9 +37,9 @@ const ShowsCard = ({ name, image, id, summary, onStarMeClick, isStarred }) => {
       <h2>{name}</h2>
       <p>{summaryStripped}</p>
       <ActionSection>
-        <a href={`/show/${id}`} target="_blank" rel="noreferrer">
+        <Link to={`/show/${id}`} target="_blank" rel="noreferrer">
           Read More
-        </a>
+        </Link>
         <StarBtn 
         ref={starBtnRef}
         type='button'

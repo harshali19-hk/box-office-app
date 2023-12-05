@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Starred from './pages/Starred';
 import MainLayout from './components/MainLayout';
@@ -14,7 +14,7 @@ function App() {
     <div>
       <GlobalTheme>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
@@ -25,7 +25,7 @@ function App() {
 
             <Route path="*" element={<>Page Not Found</>} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </QueryClientProvider>
       </GlobalTheme>
     </div>
